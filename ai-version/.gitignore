@@ -1,12 +1,9 @@
+venv/
 __pycache__/
 *.pyc
-.venv/
-venv/
-.env
 
 cache/
 ai-version/cache/
 
-
-.idea/
-.vscode/
+output/
+ai-version/output/

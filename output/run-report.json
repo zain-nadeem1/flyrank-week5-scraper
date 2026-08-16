@@ -1,12 +1,25 @@
 {
-  "started_at": "2026-08-16T18:55:36.824900+00:00",
-  "duration_seconds": 4.28,
+  "start_time": "2026-08-16T19:55:31.407617+00:00",
+  "duration_seconds": 5.628,
   "catalogue_pages": 3,
+  "discovered": 60,
+  "unique_urls": 60,
   "detail_pages": 60,
   "pages_fetched": 0,
   "cache_hits": 63,
   "valid_records": 60,
   "invalid_records": 0,
   "failed_pages": 0,
-  "failed_urls": []
+  "csv_exported": true,
+  "change_detection": {
+    "new": 0,
+    "changed": 0,
+    "unchanged": 60,
+    "gone": 0,
+    "first_run": false,
+    "run_time": "2026-08-16T19:55:31.407617+00:00",
+    "current_records": 60,
+    "previous_records": 60
+  },
+  "dashboard": "output/dashboard.html"
 }

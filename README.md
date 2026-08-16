@@ -390,3 +390,58 @@ My version was built around the assignment checkpoints, including deliberately t
 The AI produced a clean and reasonably strong scraper, and in a few areas—especially price normalization and retry handling—it was better than my first implementation. However, it did not completely reproduce the engineering evidence and checkpoint workflow I had already built.
 
 The main lesson was that **the quality of an AI-generated implementation depends heavily on the specification given to it**. My prompt described the scraper well, but I did not describe every testing and evidence requirement precisely enough. Building the original version first made it much easier to identify these omissions.
+
+
+---
+
+## Optional Extras
+
+### 1. CSV Export
+
+The scraper exports all validated records to:
+
+`output/books.csv`
+
+The CSV contains one row per book and the same scalar fields as the validated JSON schema.
+
+The current schema contains no nested arrays or objects, so no complex flattening was required. The `description` field is stored as a normal CSV text field.
+
+### 2. Change Detection
+
+The scraper compares the current validated records with the previous `output/books.json`.
+
+Books are identified by `product_url`.
+
+Each record is hashed using SHA-256 over the meaningful book fields:
+
+- title
+- product_url
+- price_text
+- price_gbp
+- availability_text
+- rating_text
+- description
+- source_page
+
+`fetched_at` is intentionally excluded because it changes between runs.
+
+The scraper reports:
+
+- `new` — records that did not exist in the previous run
+- `changed` — existing records whose meaningful data changed
+- `unchanged` — existing records with identical data
+- `gone` — records present previously but missing from the current run
+
+The results are written to:
+
+`output/change-report.json`
+
+On an identical rerun, the expected result is:
+
+```json
+{
+  "new": 0,
+  "changed": 0,
+  "unchanged": 60,
+  "gone": 0
+}
