@@ -23,7 +23,7 @@ TIMEOUT = 10
 DELAY = 0.5
 RETRY_DELAY = 1
 
-TEST_FAILURE_URL = "https://books.toscrape.com/catalogue/this-book-does-not-exist-999999/index.html"
+TEST_FAILURE_URL = None
 
 
 class BookRecord(BaseModel):
